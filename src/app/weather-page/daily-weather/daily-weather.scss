@@ -1,0 +1,50 @@
+.daily-weather__card {
+  color: white;
+
+  .card__title {
+    font-size: 1rem;
+  }
+
+  .daily-weather-items-block {
+    display: flex;
+    margin-top: 0.7rem;
+    gap: 0.8rem;
+  }
+
+  .daily-weather-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.8rem;
+    background-color: var(--Neutral800);
+    border-radius: 0.7rem;
+    border: 1px solid var(--Neutral600);
+    width: 100%;
+    height: 9rem;
+
+    .skeleton {
+      background: var(--Neutral800);
+    }
+
+    .weather-date {
+      font-size: 0.9rem;
+      color: var(--Neutral200);
+    }
+
+    .temp-range {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+
+      .weather-temp {
+        font-size: 0.8rem;
+        color: var(--Neutral200);
+      }
+    }
+
+    .weather-icon {
+      width: 4rem;
+      margin: 0.5rem 0;
+    }
+  }
+}

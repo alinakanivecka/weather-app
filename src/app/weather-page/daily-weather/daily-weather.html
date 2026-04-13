@@ -1,0 +1,32 @@
+<div class="daily-weather__card">
+  @if (isLoading) {
+  <h3 class="card__title">Daily forecast</h3>
+
+  <div class="daily-weather-items-block">
+    @for (item of [1, 2, 3, 4,5,6,7]; track item) {
+    <div class="daily-weather-item skeleton"></div>
+    }
+  </div>
+
+  } @else {
+  @if (dailyItems.length > 0) {
+  <h3 class="card__title">Daily forecast</h3>
+  }
+
+  <div class="daily-weather-items-block">
+    @for (item of dailyItems; track item.date) {
+    <div class="daily-weather-item">
+      <p class="weather-date">{{item.date | date:'EEE'}}</p>
+      <img class="weather-icon" [src]="getWeatherIcon(item.code)" alt="weather-icon">
+      <div class="temp-range">
+        <p class="weather-temp">{{item.max}}В°</p>
+        <p class="weather-temp">{{item.min}}В°</p>
+      </div>
+    </div>
+    }
+  </div>
+  }
+
+
+
+</div>

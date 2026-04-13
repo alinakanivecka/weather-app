@@ -1,0 +1,145 @@
+.hourly-weather__card {
+  padding: 1.4rem 0;
+  background-color: var(--Neutral800);
+  border-radius: 0.7rem;
+  color: white;
+
+  .card__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 1rem;
+
+    .card__title {
+      font-size: 1rem;
+    }
+
+    .dropdown-days {
+      position: relative;
+
+      .toggleDropdown {
+        border: none;
+        border-radius: 0.3rem;
+        background-color: var(--Neutral600);
+        color: white;
+        padding: 0.4rem 0.6rem;
+        font-size: 0.8rem;
+        cursor: pointer;
+
+        &:hover {
+          background-color: var(--Neutral700);
+        }
+
+        .fa-solid {
+          font-size: 0.6rem;
+          text-align: end;
+        }
+      }
+
+      .selected-day {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 2.5rem;
+        right: 0.1rem;
+        background-color: var(--Neutral800);
+        border-radius: 0.6rem;
+        border: 1px solid var(--Neutral600);
+        padding: 0.5rem;
+        gap: 0.3rem;
+        width: 12rem;
+
+        .day-label {
+          background-color: transparent;
+          color: white;
+          font-size: 0.8rem;
+          border: none;
+          padding: 0.4rem;
+          width: 100%;
+          text-align: justify;
+          cursor: pointer;
+
+          &:hover,
+          &.active {
+            background-color: var(--Neutral700);
+            border-radius: 0.3rem;
+          }
+        }
+      }
+    }
+  }
+
+  .hourly-weather-items-block {
+    display: flex;
+    flex-direction: column;
+    padding: 0 1rem;
+    gap: 0.6rem;
+    margin-top: 1rem;
+    overflow-y: auto;
+    max-height: 29.5rem;
+
+    &::-webkit-scrollbar-thumb {
+      background: var(--Neutral300);
+      border-radius: 10px;
+      opacity: 0.5;
+    }
+
+    &::-webkit-scrollbar {
+      width: 0.1rem;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    .hourly-weather-item {
+      display: flex;
+      align-items: center;
+      background-color: var(--Neutral700);
+      border-radius: 0.3rem;
+      border: 1px solid var(--Neutral600);
+      padding: 0.4rem 0.6rem;
+      height: 3rem;
+
+      .weather-icon {
+        width: 2rem;
+        margin-right: 0.4rem;
+      }
+
+      .temp {
+        margin-left: auto;
+        font-size: 0.9rem;
+        color: var(--Neutral200);
+      }
+    }
+
+    .skeleton-item {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .skeleton-item::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -150%;
+      width: 150%;
+      height: 100%;
+      background: linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.06) 35%,
+        rgba(255, 255, 255, 0.14) 50%,
+        rgba(255, 255, 255, 0.06) 65%,
+        transparent 100%
+      );
+      animation: shimmer 3s infinite;
+    }
+  }
+}
+
+@keyframes shimmer {
+  100% {
+    left: 100%;
+  }
+}

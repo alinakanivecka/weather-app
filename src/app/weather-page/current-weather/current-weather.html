@@ -1,0 +1,73 @@
+<div class="current-weather__card">
+
+  @if (isLoading ) {
+  <div class="skeleton-card weather-forecast">
+    <div class="loader"></div>
+    Loading...
+  </div>
+
+  <div class="weather-forecast__details-block">
+    <div class="weather-forecast__details skeleton">
+      <span class="details__title">Feels Like</span>
+      <p class="details__info">-</p>
+    </div>
+    <div class="weather-forecast__details skeleton">
+      <span class="details__title">Humidity</span>
+      <p class="details__info">-</p>
+    </div>
+    <div class="weather-forecast__details skeleton">
+      <span class="details__title">Wind</span>
+      <p class="details__info">-</p>
+    </div>
+    <div class="weather-forecast__details skeleton">
+      <span class="details__title">Precipitation</span>
+      <p class="details__info">-</p>
+    </div>
+  </div>
+
+  } @else {
+  @if (current && city) {
+  <div class="weather-forecast">
+    <div class="weather-forecast__name">
+      <h2>{{city.name}}, {{city.country}}</h2>
+      <p class="weather__date">{{current.time | date:'EEEE, MMM d, y'}}</p>
+    </div>
+    <img class="weather-icon" [src]="getWeatherIcon(current.weather_code)" alt="weather-icon">
+    <p class="weather-current-temp">{{current.temperature_2m}}В°</p>
+  </div>
+
+  <div class="weather-forecast__details-block">
+    <div class="weather-forecast__details">
+      <span class="details__title">Feels Like</span>
+      <p class="details__info">{{current.apparent_temperature}}В°</p>
+    </div>
+    <div class="weather-forecast__details">
+      <span class="details__title">Humidity</span>
+      <p class="details__info">{{current.relative_humidity_2m}}%</p>
+    </div>
+    <div class="weather-forecast__details">
+      <span class="details__title">Wind</span>
+      <p class="details__info">{{current.wind_speed_10m}}
+
+        @if(unitsService.windSpeedUnit() === 'kmh') {
+        km/h
+        } @else {
+        mph
+        }
+      </p>
+    </div>
+    <div class="weather-forecast__details">
+      <span class="details__title">Precipitation</span>
+      <p class="details__info">{{current.precipitation}}
+
+        @if(unitsService.precipitationUnit() === 'mm') {
+        mm
+        } @else {
+        in
+        }
+      </p>
+    </div>
+  </div>
+  }
+  }
+</div>

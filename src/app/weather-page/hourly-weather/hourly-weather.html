@@ -1,0 +1,54 @@
+@if (isLoading) {
+<div class="hourly-weather__card">
+
+  <div class="card__header">
+    <h3 class="card__title">Hourly forecast</h3>
+
+    <div class="dropdown-days" #container>
+      <button class="toggleDropdown" type="button">- <i class="fa-solid fa-chevron-down"></i></button>
+    </div>
+  </div>
+
+  <div class="hourly-weather-items-block">
+    @for (item of [1,2,3,4,5,6,7,8,9]; track item) {
+    <div class="hourly-weather-item skeleton-item"></div>
+    }
+  </div>
+</div>
+} @else {
+@if(hourlyItems.length > 0) {
+<div class="hourly-weather__card">
+  <div class="card__header">
+    <h3 class="card__title">Hourly forecast</h3>
+
+    <div class="dropdown-days" #container>
+      <button class="toggleDropdown" (click)="toggleDropdown()" type="button">{{currentSelectedDay?.label}}
+        @if(isOpen()) {
+        <i class="fa-solid fa-chevron-up"></i>
+        } @else {
+        <i class="fa-solid fa-chevron-down"></i>
+        }
+      </button>
+      @if (isOpen()) {
+      <div class="selected-day">
+        @for (day of availableDays; track day.value) {
+        <button class="day-label" type="button" [class.active]="day.value === currentSelectedDay?.value"
+          (click)="selectDay(day.value)">{{day.label}}</button>
+        }
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="hourly-weather-items-block">
+    @for (item of hourlyItems; track item.time) {
+    <div class="hourly-weather-item">
+      <img class="weather-icon" [src]="getWeatherIcon(item.code)" alt="weather-icon">
+      <p>{{item.time | date:'h a'}}</p>
+      <p class="temp">{{item.temp}}В°</p>
+    </div>
+    }
+  </div>
+</div>
+}
+}
