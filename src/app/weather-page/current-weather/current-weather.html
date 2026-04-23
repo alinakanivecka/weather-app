@@ -27,7 +27,7 @@
 
   } @else {
   @if (current && city) {
-  <div class="weather-forecast">
+  <div class="weather-forecast" [style.background-image]="'url(assets/images/bg-today-large.svg)'">
     <div class="weather-forecast__name">
       <h2>{{city.name}}, {{city.country}}</h2>
       <p class="weather__date">{{current.time | date:'EEEE, MMM d, y'}}</p>
