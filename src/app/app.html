@@ -1,33 +1,35 @@
 <header class="header">
   <img class="header__title" src="assets/images/logo.svg" alt="logo">
-  <button class="units-btn" type="button" (click)="toggleDropdown()" ><img src="assets/images/icon-units.svg"
-      alt="icon-units">Units
-    @if(isUnitDropdownOpen()) {
-    <i class="fa-solid fa-chevron-up"></i>
-    } @else {
-    <i class="fa-solid fa-chevron-down"></i>
-    }
 
-    @let isCelsius = unitsService.temperatureUnit() === 'celsius';
-    @let isFahrenheit = unitsService.temperatureUnit() === 'fahrenheit';
-    @let isWindSpeedMetric = unitsService.windSpeedUnit() === 'kmh';
-    @let isWindSpeedImperial = unitsService.windSpeedUnit() === 'mph';
-    @let isPrecipitationMetric = unitsService.precipitationUnit() === 'mm';
-    @let isPrecipitationImperial = unitsService.precipitationUnit() === 'inch';
+  @let isCelsius = unitsService.temperatureUnit() === 'celsius';
+  @let isFahrenheit = unitsService.temperatureUnit() === 'fahrenheit';
+  @let isWindSpeedMetric = unitsService.windSpeedUnit() === 'kmh';
+  @let isWindSpeedImperial = unitsService.windSpeedUnit() === 'mph';
+  @let isPrecipitationMetric = unitsService.precipitationUnit() === 'mm';
+  @let isPrecipitationImperial = unitsService.precipitationUnit() === 'inch';
+
+  <div class="units-menu" appClickOutside (appClickOutside)="isUnitDropdownOpen.set(false)">
+    <button class="units-btn" type="button" (click)="toggleDropdown()"><i class="fa-solid fa-gear"></i> Units
+      @if(isUnitDropdownOpen()) {
+      <i class="fa-solid fa-chevron-up"></i>
+      } @else {
+      <i class="fa-solid fa-chevron-down"></i>
+      }
+    </button>
 
     @if (isUnitDropdownOpen()) {
-    <div class="unit-dropdown" #container>
+    <div class="unit-dropdown">
 
       @if(isCelsius) {
-      <button type="button" (click)="unitsService.setImperial()">Switch to Imperial</button>
+      <button type="button" (click)="setImperial()">Switch to Imperial</button>
       } @else {
-      <button type="button" (click)="unitsService.setMetric()">Switch to Metric</button>
+      <button type="button" (click)="setMetric()">Switch to Metric</button>
       }
 
 
       <div class="change-unit">
         <p class="unit">Temperature</p>
-        <button type="button" (click)="changeTemperatureUnit('celsius')" [class.active]="isCelsius">Celsius (В°C)
+        <button type="button" (click)="changeTemperatureUnit('celsius')" [class.active]="isCelsius">Celsius (°C)
 
           @if(isCelsius) {
           <i class="fa-solid fa-check"></i>
@@ -80,7 +82,7 @@
       </div>
     </div>
     }
-  </button>
+  </div>
 
 
 </header>

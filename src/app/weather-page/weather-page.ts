@@ -1,23 +1,20 @@
-import {
-  Component,
-  computed,
-  effect,
-  ElementRef,
-  HostListener,
-  inject,
-  signal,
-  ViewChild,
-} from '@angular/core';
+import { Component, computed, effect, inject, signal } from '@angular/core';
 import { WeatherService } from '../services/weather.service';
 import { CityResult, DailyWeatherItem, HourlyWeatherItem, WeatherResponse } from '../weather.model';
 import { CurrentWeatherComponent } from './current-weather/current-weather';
 import { DailyWeatherComponent } from './daily-weather/daily-weather';
 import { HourlyWeatherComponent } from './hourly-weather/hourly-weather';
 import { UnitsService } from '../services/units.service';
+import { ClickOutsideDirective } from '../directives/click-outside.directive';
 
 @Component({
   selector: 'app-weather-page',
-  imports: [CurrentWeatherComponent, DailyWeatherComponent, HourlyWeatherComponent],
+  imports: [
+    CurrentWeatherComponent,
+    DailyWeatherComponent,
+    HourlyWeatherComponent,
+    ClickOutsideDirective,
+  ],
   templateUrl: './weather-page.html',
   styleUrl: './weather-page.scss',
 })
@@ -41,21 +38,6 @@ export class WeatherPage {
   currentWeather = computed(() => this.weather()?.current ?? null);
   dailyWeather = computed(() => this.weather()?.daily ?? null);
   hourlyWeather = computed(() => this.weather()?.hourly ?? null);
-
-  @ViewChild('searchContainer') container!: ElementRef;
-
-  @HostListener('document:click', ['$event'])
-  onClick(event: MouseEvent) {
-    if (!this.container) {
-      return;
-    }
-
-    const clickedInside = this.container.nativeElement.contains(event.target);
-
-    if (!clickedInside) {
-      this.isOpenDropdown.set(false);
-    }
-  }
 
   dailyWeatherItems = computed<DailyWeatherItem[]>(() => {
     const daily = this.dailyWeather();
@@ -197,7 +179,6 @@ export class WeatherPage {
     const precip = this.unitsService.precipitationUnit();
 
     this.errorMessage.set('');
-    this.isLoading.set(true);
 
     this.weatherService.getWeather(lat, lon, temp, wind, precip).subscribe({
       next: (data) => {

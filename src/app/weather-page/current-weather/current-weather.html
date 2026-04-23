@@ -32,14 +32,16 @@
       <h2>{{city.name}}, {{city.country}}</h2>
       <p class="weather__date">{{current.time | date:'EEEE, MMM d, y'}}</p>
     </div>
-    <img class="weather-icon" [src]="getWeatherIcon(current.weather_code)" alt="weather-icon">
-    <p class="weather-current-temp">{{current.temperature_2m}}В°</p>
+    <div class="temp-wrap">
+      <img class="weather-icon" [src]="getWeatherIcon(current.weather_code)" alt="weather-icon">
+    <p class="weather-current-temp">{{current.temperature_2m | number:'1.0-0'}}°</p>
+    </div>
   </div>
 
   <div class="weather-forecast__details-block">
     <div class="weather-forecast__details">
       <span class="details__title">Feels Like</span>
-      <p class="details__info">{{current.apparent_temperature}}В°</p>
+      <p class="details__info">{{current.apparent_temperature | number:'1.0-0'}}°</p>
     </div>
     <div class="weather-forecast__details">
       <span class="details__title">Humidity</span>
@@ -47,7 +49,7 @@
     </div>
     <div class="weather-forecast__details">
       <span class="details__title">Wind</span>
-      <p class="details__info">{{current.wind_speed_10m}}
+      <p class="details__info">{{current.wind_speed_10m | number:'1.0-0'}}
 
         @if(unitsService.windSpeedUnit() === 'kmh') {
         km/h
@@ -58,7 +60,7 @@
     </div>
     <div class="weather-forecast__details">
       <span class="details__title">Precipitation</span>
-      <p class="details__info">{{current.precipitation}}
+      <p class="details__info">{{current.precipitation | number:'1.0-0'}}
 
         @if(unitsService.precipitationUnit() === 'mm') {
         mm

@@ -11,13 +11,13 @@
   <h1 class="weather-page__title">How's the sky looking today?</h1>
 
   <div class="search">
-    <div #searchContainer class="search-wrap">
+    <div class="search-wrap" appClickOutside (appClickOutside)="isOpenDropdown.set(false)">
       <i class="fa-solid fa-magnifying-glass"></i>
       <input class="input" type="text" placeholder="Search for a place..." [value]="search()" (input)="onInput($event)"
-        (keyup.enter)="onSearch()">
+        (keyup.enter)="onSearch()" aria-label="Search for a place">
 
       @if (search()) {
-      <button class="clear-btn" (click)="clearSearch()" type="button">x</button>
+      <button class="clear-btn" (click)="clearSearch()" type="button" aria-label="Clear search">x</button>
       }
 
       @if (isSearchLoading()) {
@@ -27,7 +27,7 @@
       } @else if(isOpenDropdown() && cities().length > 0) {
       <div class="search-dropdown">
         @for (city of cities(); track city.id) {
-        <button class="search-result" (click)="selectCity(city)" type="button">{{city.name}}</button>
+        <button class="search-result" (click)="selectCity(city)" type="button">{{city.name}}, {{city.country}}</button>
         }
       </div>
       }

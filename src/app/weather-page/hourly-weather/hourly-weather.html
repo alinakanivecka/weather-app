@@ -21,7 +21,7 @@
   <div class="card__header">
     <h3 class="card__title">Hourly forecast</h3>
 
-    <div class="dropdown-days" #container>
+    <div class="dropdown-days" appClickOutside (appClickOutside)="isOpen.set(false)">
       <button class="toggleDropdown" (click)="toggleDropdown()" type="button">{{currentSelectedDay?.label}}
         @if(isOpen()) {
         <i class="fa-solid fa-chevron-up"></i>
@@ -45,7 +45,7 @@
     <div class="hourly-weather-item">
       <img class="weather-icon" [src]="getWeatherIcon(item.code)" alt="weather-icon">
       <p>{{item.time | date:'h a'}}</p>
-      <p class="temp">{{item.temp}}В°</p>
+      <p class="temp">{{item.temp | number:'1.0-0'}}°</p>
     </div>
     }
   </div>

@@ -48,3 +48,12 @@
     }
   }
 }
+
+@media (max-width: 50rem) {
+  .daily-weather__card {
+    .daily-weather-items-block {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}

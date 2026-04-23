@@ -19,8 +19,8 @@
       <p class="weather-date">{{item.date | date:'EEE'}}</p>
       <img class="weather-icon" [src]="getWeatherIcon(item.code)" alt="weather-icon">
       <div class="temp-range">
-        <p class="weather-temp">{{item.max}}В°</p>
-        <p class="weather-temp">{{item.min}}В°</p>
+        <p class="weather-temp">{{item.max | number:'1.0-0'}}°</p>
+        <p class="weather-temp">{{item.min | number:'1.0-0'}}°</p>
       </div>
     </div>
     }

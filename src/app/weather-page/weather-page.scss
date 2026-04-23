@@ -178,3 +178,25 @@ main {
     }
   }
 }
+
+@media (max-width: 50rem) {
+  main {
+    .search {
+      flex-direction: column;
+      width: 100%;
+
+      .search-wrap {
+        min-width: auto;
+      }
+    }
+
+    .weather-page__title {
+      text-align: center;
+    }
+
+    .weather-grid {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+}

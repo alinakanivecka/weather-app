@@ -51,14 +51,14 @@ export class WeatherService {
     return this.http.get<WeatherResponse>(url, { params });
   }
 
-  sunnyCode = [0];
-  partlycloudyCodes = [1, 2];
-  overcastCode = [3];
-  rainCodes = [61, 63, 65, 80, 81, 82];
-  snowCodes = [71, 73, 75];
-  fogCodes = [45, 48];
-  drizzleCodes = [51, 53, 55];
-  stormCodes = [95, 96, 99];
+  private readonly sunnyCode = [0];
+  private readonly partlycloudyCodes = [1, 2];
+  private readonly overcastCode = [3];
+  private readonly rainCodes = [61, 63, 65, 80, 81, 82];
+  private readonly snowCodes = [71, 73, 75];
+  private readonly fogCodes = [45, 48];
+  private readonly drizzleCodes = [51, 53, 55];
+  private readonly stormCodes = [95, 96, 99];
 
   getWeatherIcon(code: number): string {
     if (this.sunnyCode.includes(code)) {

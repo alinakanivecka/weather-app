@@ -1,12 +1,12 @@
-import { Component, inject, Input, signal } from '@angular/core';
+import { Component, inject, Input } from '@angular/core';
 import { CityResult, CurrentWeather } from '../../weather.model';
-import { DatePipe } from '@angular/common';
+import { DatePipe, DecimalPipe } from '@angular/common';
 import { WeatherService } from '../../services/weather.service';
 import { UnitsService } from '../../services/units.service';
 
 @Component({
   selector: 'app-current-weather',
-  imports: [DatePipe],
+  imports: [DatePipe, DecimalPipe],
   templateUrl: './current-weather.html',
   styleUrl: './current-weather.scss',
 })

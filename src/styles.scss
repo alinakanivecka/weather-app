@@ -32,3 +32,9 @@ button {
 section {
   height: 100%;
 }
+
+@media (max-width: 50rem) {
+  body {
+    padding: 1rem;
+  }
+}

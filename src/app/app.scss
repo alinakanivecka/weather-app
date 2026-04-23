@@ -2,17 +2,20 @@
   display: flex;
   justify-content: space-between;
 
+  .units-menu {
+    position: relative;
+  }
+
   .units-btn {
-    background-color: var(--Neutral800);
     display: flex;
     align-items: center;
     gap: 0.6rem;
+    background-color: var(--Neutral800);
     border: 3px solid transparent;
     border-radius: 0.6rem;
-    padding: 0 1rem;
+    padding: 0.5rem;
     font-size: 0.9rem;
     color: white;
-    position: relative;
 
     .fa-solid {
       font-size: 0.7rem;
@@ -81,3 +84,5 @@
     }
   }
 }
+
+

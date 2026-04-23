@@ -14,9 +14,13 @@
     background-size: cover;
     height: 15.2rem;
 
+    .temp-wrap {
+      display: flex;
+      gap: 2rem;
+    }
+
     .weather-icon {
       width: 5rem;
-      margin-left: auto;
     }
 
     .weather-forecast__name {
@@ -30,7 +34,6 @@
     .weather-current-temp {
       font-size: 4rem;
       font-weight: 600;
-      margin-left: 2rem;
     }
   }
 
@@ -67,27 +70,65 @@
     justify-content: center;
     gap: 1rem;
 
-    /* HTML: <div class="loader"></div> */
-.loader {
-  width: 3rem;
-  aspect-ratio: 2;
-  --_g: no-repeat radial-gradient(circle closest-side,#fff 90%,#0000);
-  background: 
-    var(--_g) 0%   50%,
-    var(--_g) 50%  50%,
-    var(--_g) 100% 50%;
-  background-size: calc(100%/3) 50%;
-  animation: l3 1s infinite linear;
-}
-@keyframes l3 {
-    20%{background-position:0%   0%, 50%  50%,100%  50%}
-    40%{background-position:0% 100%, 50%   0%,100%  50%}
-    60%{background-position:0%  50%, 50% 100%,100%   0%}
-    80%{background-position:0%  50%, 50%  50%,100% 100%}
-}
+    .loader {
+      width: 3rem;
+      aspect-ratio: 2;
+      --_g: no-repeat radial-gradient(circle closest-side, #fff 90%, #0000);
+      background:
+        var(--_g) 0% 50%,
+        var(--_g) 50% 50%,
+        var(--_g) 100% 50%;
+      background-size: calc(100% / 3) 50%;
+      animation: l3 1s infinite linear;
+    }
+    @keyframes l3 {
+      20% {
+        background-position:
+          0% 0%,
+          50% 50%,
+          100% 50%;
+      }
+      40% {
+        background-position:
+          0% 100%,
+          50% 0%,
+          100% 50%;
+      }
+      60% {
+        background-position:
+          0% 50%,
+          50% 100%,
+          100% 0%;
+      }
+      80% {
+        background-position:
+          0% 50%,
+          50% 50%,
+          100% 100%;
+      }
+    }
   }
 
   .skeleton {
     background: var(--Neutral800);
+  }
+}
+
+@media (max-width: 50rem) {
+  .current-weather__card {
+    .weather-forecast {
+      padding: 1rem;
+      flex-direction: column;
+      justify-content: space-evenly;
+
+      .weather-forecast__name {
+        text-align: center;
+      }
+    }
+
+    .weather-forecast__details-block {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 }
