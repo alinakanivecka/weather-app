@@ -2,7 +2,7 @@
 
   @if(errorMessage()) {
   <div class="error-state">
-    <img src="assets/images/icon-error.svg" alt="icon-error">
+    <img src="/assets/images/icon-error.svg" alt="icon-error">
     <h1>Something went wrong</h1>
     <p>We couldn`t connect to the server (API error). Please try again in a few moments</p>
     <button type="button" (click)="retry()"><i class="fa-solid fa-arrows-rotate"></i> Retry</button>
@@ -22,7 +22,7 @@
 
       @if (isSearchLoading()) {
       <div class="search-dropdown">
-        <p class="search-result"><img src="assets/images/icon-loading.svg" alt="icon-loading"> Search in progress</p>
+        <p class="search-result"><img src="/assets/images/icon-loading.svg" alt="icon-loading"> Search in progress</p>
       </div>
       } @else if(isOpenDropdown() && cities().length > 0) {
       <div class="search-dropdown">
