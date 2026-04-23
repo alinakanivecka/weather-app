@@ -62,37 +62,37 @@ export class WeatherService {
 
   getWeatherIcon(code: number): string {
     if (this.sunnyCode.includes(code)) {
-      return 'assets/images/icon-sunny.webp';
+      return '/assets/images/icon-sunny.webp';
     }
 
     if (this.partlycloudyCodes.includes(code)) {
-      return 'assets/images/icon-partly-cloudy.webp';
+      return '/assets/images/icon-partly-cloudy.webp';
     }
 
     if (this.overcastCode.includes(code)) {
-      return 'assets/images/icon-overcast.webp';
+      return '/assets/images/icon-overcast.webp';
     }
 
     if (this.rainCodes.includes(code)) {
-      return 'assets/images/icon-rain.webp';
+      return '/assets/images/icon-rain.webp';
     }
 
     if (this.snowCodes.includes(code)) {
-      return 'assets/images/icon-snow.webp';
+      return '/assets/images/icon-snow.webp';
     }
 
     if (this.fogCodes.includes(code)) {
-      return 'assets/images/icon-fog.webp';
+      return '/assets/images/icon-fog.webp';
     }
 
     if (this.drizzleCodes.includes(code)) {
-      return 'assets/images/icon-drizzle.webp';
+      return '/assets/images/icon-drizzle.webp';
     }
 
     if (this.stormCodes.includes(code)) {
-      return 'assets/images/icon-storm.webp';
+      return '/assets/images/icon-storm.webp';
     }
 
-    return 'assets/images/icon-partly-cloudy.webp';
+    return '/assets/images/icon-partly-cloudy.webp';
   }
 }
